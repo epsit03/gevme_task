@@ -8,6 +8,7 @@
 ● Submit button <br>
 ## 2. Create a table in HTMl
 ![Screenshot from 2024-08-10 20-55-38](https://github.com/user-attachments/assets/53f32e7a-3b0e-418a-ba76-b150b2efc130)
+#### code provided in `table.html`
 # 2. CSS TASK
 Style the form you created with the following requirements: <br>
 ● Center the form on the page <br>
