@@ -16,7 +16,7 @@ Style the form you created with the following requirements: <br>
 ● Add padding and margins to form elements <br>
 ● Style the submit button with a hover effect <br>
 ● Make the form responsive (adjust layout for screens smaller than 600px) <br>
-#### code provided in `styles.css`
+#### code provided in `style.css`
 # 3. JavaScript Task
 Implement the following functionality:<br>
 ● Allow only alphabets, space and hyphen characters in the Name field. Display an error
