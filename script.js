@@ -64,7 +64,7 @@ function checkEmailConfirm(email, email_confirm) {
 
 email_confirm.addEventListener('paste', (event) => {
   event.preventDefault();
-  alert('Please retype your email address to confirm.');
+  alert('Please refrain from pasting your email address to confirm. Kindly type it');
 });
 
 // function checkLength(input, min, max) {
