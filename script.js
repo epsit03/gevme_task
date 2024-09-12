@@ -62,6 +62,11 @@ function checkEmailConfirm(email, email_confirm) {
     }
 }
 
+email_confirm.addEventListener('paste', (event) => {
+  event.preventDefault();
+  alert('Please retype your email address to confirm.');
+});
+
 // function checkLength(input, min, max) {
 //     if (input.value.length < min) {
 //         error(input, `${input.id} must be at least ${min} characters`);
