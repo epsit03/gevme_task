@@ -130,7 +130,11 @@
             margin-bottom: 12px;
         }
 
-
+        /* Add this CSS for the highlight effect */
+.highlight {
+    background-color: rgba(249, 220, 133, 0.423);
+    transition: background-color 0.5s ease-in-out;
+}
 
         a {
             text-decoration: none;
@@ -338,6 +342,14 @@ function scrollToSection(ticketId) {
         top: scrollToPosition,
         behavior: 'smooth'
     });
+
+    // Add the highlight class
+    section.classList.add('highlight');
+
+    // Remove the highlight after 1.5 seconds (1500 milliseconds)
+    setTimeout(() => {
+        section.classList.remove('highlight');
+    }, 1500);
 }
 
 // Add event listeners to the ticket summary links
