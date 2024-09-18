@@ -27,7 +27,7 @@
             max-width: 75%;
             margin-right: 10px;
             background-color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -42,9 +42,11 @@
             border-bottom: 1px solid #ddd;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            margin-top: 10px;
             color: #333;
             transition: color 0.3s ease;
         }
+
 
         .form-group {
             margin-bottom: 15px;
@@ -101,6 +103,10 @@
             font-weight: bold;
         }
 
+        label {
+            padding: 10px;
+        }
+
         .total {
             margin-top: 20px;
         }
@@ -118,6 +124,13 @@
                 transform: translateY(0);
             }
         }
+
+        input {
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+
 
         a {
             text-decoration: none;
@@ -311,5 +324,30 @@ document.addEventListener('paste', confmail => {
   event.preventDefault();
   alert('Please refrain from pasting your email address to confirm. Kindly type it');
 });
+
+function scrollToSection(ticketId) {
+    const section = document.getElementById(ticketId);
+
+    // Get the position of the element and calculate the center position
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const scrollToPosition = sectionTop - (viewportHeight / 3) + (section.offsetHeight / 2);
+
+    // Scroll smoothly to the calculated position
+    window.scrollTo({
+        top: scrollToPosition,
+        behavior: 'smooth'
+    });
+}
+
+// Add event listeners to the ticket summary links
+document.querySelectorAll('.ticket-summary a').forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const ticketId = this.getAttribute('href').substring(1);
+        scrollToSection(ticketId);
+    });
+});
+
 </script>
 </html>
