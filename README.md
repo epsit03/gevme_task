@@ -1,27 +1,53 @@
-# 1. HTML TASK
-### 1. Create a form with the following fields:
-● Name (text input) <br>
-● Email (email input) <br>
-● Confirm Email (email input) <br>
-● Age (number input) <br>
-● Favorite color (color picker) <br>
-● Submit button <br>
-#### code provided in `index.html`
-## 2. Create a table in HTMl
-![Screenshot from 2024-08-10 20-55-38](https://github.com/user-attachments/assets/53f32e7a-3b0e-418a-ba76-b150b2efc130)
-#### code provided in `table.html`
-# 2. CSS TASK
-Style the form you created with the following requirements: <br>
-● Center the form on the page <br>
-● Add padding and margins to form elements <br>
-● Style the submit button with a hover effect <br>
-● Make the form responsive (adjust layout for screens smaller than 600px) <br>
-#### code provided in `style.css`
-# 3. JavaScript Task
-Implement the following functionality:<br>
-● Allow only alphabets, space and hyphen characters in the Name field. Display an error
-otherwise.<br>
-● Validate the form fields before submission, Display an error message if any field is empty<br>
-● Verify if Email & Confirm email fields match, display an error message if not matching<br>
-● On successful submission, display a thank you message and clear the form<br>
-#### code provided in `script.js`
+# Star Rating Registration Form
+
+This project is a registration form that allows users to indicate whether they are software engineers and, if yes, to rate their software development skills using a star-rating system.
+
+## Features
+
+- Dropdown to select if the user is a software engineer (Yes/No).
+- If "Yes" is selected, a dynamic star rating system appears to rate the user's software development skills (1-5 stars).
+- Responsive and elegant form design with subtle animations.
+- Fully customizable and easy-to-integrate.
+- Professionally designed footer.
+
+## Technology Stack
+
+- **HTML**: For the structure of the form.
+- **CSS**: For styling and animations.
+- **JavaScript**: For dynamically displaying and hiding the star rating based on user selection.
+  
+## How to Use
+
+1. Clone the repository or download the code.
+2. Open the `index.html` file in any browser.
+3. Select whether you are a software engineer from the dropdown.
+4. If "Yes" is selected, rate your skills by clicking on the stars.
+5. Press the "Submit" button to submit the form.
+
+### Directory Structure
+<i>In `main` branch</i>
+```
+project-root/
+├── README.md       # Documentation file
+├── index.html      # The main HTML file with the star rating form
+```
+## Code Explanation
+
+- The form contains a dropdown to ask if the user is a software engineer.
+- Based on the selection, a star-rating system appears, allowing users to rate their skills from 1 to 5 stars.
+- CSS transitions and JavaScript handle the smooth appearance/disappearance of the rating section.
+  
+## Example
+
+![Form Preview](https://example.com/your-image.png)  
+*Screenshot of the form with star rating enabled.*
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+## Footer
+
+Designed and developed by **Epsit.B**.
+
+
