@@ -3,52 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Form Validator</title>
+    <title>Star Rating</title>
+    <style>
+        .star-rating {
+            direction: rtl;
+            display: inline-block;
+            font-size: 2rem;
+            unicode-bidi: bidi-override;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            color: #ddd;
+            cursor: pointer;
+        }
+        .star-rating input:checked ~ label {
+            color: #f5c518;
+        }
+        .star-rating label:hover, .star-rating label:hover ~ label {
+            color: #f5c518;
+        }
+    </style>
 </head>
 <body>
-    
-    <div class="container d-flex justify-content-center">
-        <div class="col-sm-7">
-            <div class="card">
-                <div class="card-header">USER DETAIL FORM</div>
-                <div class="card-body">
-                    <form id="form" novalidate>
-                        <div class="form-group">
-                            <label for="yourname">Your Name</label>
-                            <input type="text" class="form-control" id="yourname" placeholder="Enter your name">
-                            <div></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email">
-                            <div></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email_confirm">Confirm Email</label>
-                            <input type="email" class="form-control" id="email_confirm" placeholder="Enter email again">
-                            <div></div>
-                        </div>                        
-                        <div class="form-group">
-                            <label for="age">Age</label>
-                            <input type="number" class="form-control" id="age" placeholder="Enter your age">
-                            <div></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="color">Favorite color:</label>
-                            <input type="color" id="color" name="color">
-                        </div>                        
-                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                    </form>
-                </div>
+
+    <form>
+        <label for="software-engineer">Are you a software engineer?</label>
+        <select id="software-engineer" name="software_engineer" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <div id="rating-container" style="display: none;">
+            <label for="skills-rating">How would you rate your software development skills?</label>
+            <div class="star-rating">
+                <input type="radio" id="star5" name="skills_rating" value="5" />
+                <label for="star5" title="Expert">&#9733;</label>
+
+                <input type="radio" id="star4" name="skills_rating" value="4" />
+                <label for="star4" title="Advanced">&#9733;</label>
+
+                <input type="radio" id="star3" name="skills_rating" value="3" />
+                <label for="star3" title="Intermediate">&#9733;</label>
+
+                <input type="radio" id="star2" name="skills_rating" value="2" />
+                <label for="star2" title="Beginner">&#9733;</label>
+
+                <input type="radio" id="star1" name="skills_rating" value="1" />
+                <label for="star1" title="Novice">&#9733;</label>
             </div>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const softwareEngineerSelect = document.getElementById('software-engineer');
+        const ratingContainer = document.getElementById('rating-container');
+
+        softwareEngineerSelect.addEventListener('change', function () {
+            if (this.value === 'yes') {
+                ratingContainer.style.display = 'block';
+            } else {
+                ratingContainer.style.display = 'none';
+            }
+        });
+    </script>
+
 </body>
 </html>
