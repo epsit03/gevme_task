@@ -1,8 +1,6 @@
-<head>
   <!-- Load jQuery library first -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Your custom script -->
-  <script>
+
+
     $(document).ready(function() {
       var current_fs, next_fs, previous_fs;
       var left, opacity, scale;
@@ -62,5 +60,3 @@
         });
       });
     });
-  </script>
-</head>
