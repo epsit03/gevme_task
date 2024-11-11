@@ -10,14 +10,27 @@
 
 <!-- Multi-Step Form -->
 <form id="msform" style="width: 400px; margin: 50px auto; text-align: center; position: relative;">
-  <!-- progressbar -->
-  <ul id="progressbar" style="margin-bottom: 30px; overflow: hidden; counter-reset: step; padding: 0;">
-    <li class="active" style="list-style-type: none; color: white; text-transform: uppercase; font-size: 9px; width: 33.33%; float: left; position: relative;">Account Setup</li>
-    <li style="list-style-type: none; color: white; text-transform: uppercase; font-size: 9px; width: 33.33%; float: left; position: relative;">Social Profiles</li>
-    <li style="list-style-type: none; color: white; text-transform: uppercase; font-size: 9px; width: 33.33%; float: left; position: relative;">Personal Details</li>
+  <!-- Progress Bar -->
+  <ul id="progressbar" style="margin-bottom: 30px; overflow: hidden; counter-reset: step; padding: 0; display: flex; justify-content: space-between;">
+    <li class="active" style="list-style-type: none; color: white; text-transform: uppercase; font-size: 9px; width: 33.33%; position: relative; text-align: center;">
+      <span style="display: block; width: 20px; height: 20px; line-height: 20px; background: #27AE60; border-radius: 50%; margin: 0 auto 10px; color: white; font-size: 12px; font-weight: bold;">1</span>
+      Account Setup
+      <div style="height: 2px; width: 100%; background: #27AE60; position: absolute; top: 12px; left: 50%; transform: translateX(50%); z-index: -1;"></div>
+    </li>
+    <li style="list-style-type: none; color: white; text-transform: uppercase; font-size: 9px; width: 33.33%; position: relative; text-align: center;">
+      <span style="display: block; width: 20px; height: 20px; line-height: 20px; background: #ccc; border-radius: 50%; margin: 0 auto 10px; color: #333; font-size: 12px; font-weight: bold;">2</span>
+      Social Profiles
+      <div style="height: 2px; width: 100%; background: #ccc; position: absolute; top: 12px; left: -50%; transform: translateX(-50%); z-index: -1;"></div>
+      <div style="height: 2px; width: 100%; background: #ccc; position: absolute; top: 12px; left: 50%; transform: translateX(50%); z-index: -1;"></div>
+    </li>
+    <li style="list-style-type: none; color: white; text-transform: uppercase; font-size: 9px; width: 33.33%; position: relative; text-align: center;">
+      <span style="display: block; width: 20px; height: 20px; line-height: 20px; background: #ccc; border-radius: 50%; margin: 0 auto 10px; color: #333; font-size: 12px; font-weight: bold;">3</span>
+      Personal Details
+      <div style="height: 2px; width: 100%; background: #ccc; position: absolute; top: 12px; left: -50%; transform: translateX(-50%); z-index: -1;"></div>
+    </li>
   </ul>
 
-  <!-- fieldsets -->
+  <!-- Fieldsets -->
   <fieldset style="background: white; border: 0; border-radius: 3px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; width: 80%; margin: 0 10%; position: relative;">
     <h2 class="fs-title" style="font-size: 15px; text-transform: uppercase; color: #2C3E50; margin-bottom: 10px;">Create your account</h2>
     <h3 class="fs-subtitle" style="font-weight: normal; font-size: 13px; color: #666; margin-bottom: 20px;">This is step 1</h3>
@@ -27,61 +40,43 @@
     <button type="button" class="next action-button" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px;">Next</button>
   </fieldset>
 
-  <fieldset style="display: none; background: white; border: 0; border-radius: 3px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; width: 80%; margin: 0 10%; position: relative;">
-    <h2 class="fs-title" style="font-size: 15px; text-transform: uppercase; color: #2C3E50; margin-bottom: 10px;">Social Profiles</h2>
-    <h3 class="fs-subtitle" style="font-weight: normal; font-size: 13px; color: #666; margin-bottom: 20px;">Your presence on social media</h3>
-    <input type="text" name="twitter" placeholder="Twitter" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
-    <input type="text" name="facebook" placeholder="Facebook" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
-    <input type="text" name="gplus" placeholder="Google Plus" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
-    <button type="button" class="previous action-button" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px;">Previous</button>
-    <button type="button" class="next action-button" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px;">Next</button>
-  </fieldset>
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const progressbar = document.querySelectorAll("#progressbar li");
+      const fieldsets = document.querySelectorAll("fieldset");
+      let currentStep = 0;
 
-  <fieldset style="display: none; background: white; border: 0; border-radius: 3px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; width: 80%; margin: 0 10%; position: relative;">
-    <h2 class="fs-title" style="font-size: 15px; text-transform: uppercase; color: #2C3E50; margin-bottom: 10px;">Personal Details</h2>
-    <h3 class="fs-subtitle" style="font-weight: normal; font-size: 13px; color: #666; margin-bottom: 20px;">We will never sell it</h3>
-    <input type="text" name="fname" placeholder="First Name" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
-    <input type="text" name="lname" placeholder="Last Name" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
-    <input type="text" name="phone" placeholder="Phone" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
-    <textarea name="address" placeholder="Address" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;"></textarea>
-    <button type="button" class="previous action-button" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px;">Previous</button>
-    <a href="https://twitter.com/GoktepeAtakan" class="action-button" target="_top" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px; text-decoration: none; display: inline-block; text-align: center;">Submit</a>
-  </fieldset>
+      function updateForm(step) {
+        fieldsets.forEach((fieldset, index) => {
+          fieldset.style.display = index === step ? 'block' : 'none';
+          progressbar[index].classList.toggle("active", index <= step);
+          const stepIndicator = progressbar[index].querySelector("span");
+          stepIndicator.style.background = index <= step ? "#27AE60" : "#ccc";
+          stepIndicator.style.color = index <= step ? "white" : "#333";
+        });
+      }
+
+      document.querySelectorAll(".next").forEach(button => {
+        button.addEventListener("click", function() {
+          if (currentStep < fieldsets.length - 1) {
+            currentStep++;
+            updateForm(currentStep);
+          }
+        });
+      });
+
+      document.querySelectorAll(".previous").forEach(button => {
+        button.addEventListener("click", function() {
+          if (currentStep > 0) {
+            currentStep--;
+            updateForm(currentStep);
+          }
+        });
+      });
+    });
+  </script>
 </form>
-
-<script>
-  // JavaScript for Multi-Step Form
-  document.addEventListener('DOMContentLoaded', function() {
-    const progressbar = document.querySelectorAll("#progressbar li");
-    const fieldsets = document.querySelectorAll("fieldset");
-    let currentStep = 0;
-
-    function updateForm(step) {
-      fieldsets.forEach((fieldset, index) => {
-        fieldset.style.display = index === step ? 'block' : 'none';
-        progressbar[index].classList.toggle("active", index <= step);
-      });
-    }
-
-    document.querySelectorAll(".next").forEach(button => {
-      button.addEventListener("click", function() {
-        if (currentStep < fieldsets.length - 1) {
-          currentStep++;
-          updateForm(currentStep);
-        }
-      });
-    });
-
-    document.querySelectorAll(".previous").forEach(button => {
-      button.addEventListener("click", function() {
-        if (currentStep > 0) {
-          currentStep--;
-          updateForm(currentStep);
-        }
-      });
-    });
-  });
-</script>
 
 </body>
 </html>
