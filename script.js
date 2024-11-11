@@ -1,121 +1,79 @@
-const form = document.getElementById('form');
-const yourname = document.getElementById('yourname');
-const email = document.getElementById('email');
-const email_confirm = document.getElementById('email_confirm');
-const colorInput = document.getElementById('colorInput');
+// https://www.linkedin.com/in/atakangk/
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
 
-// const colorPreview = document.getElementById('colorPreview');
-
-//     colorInput.addEventListener('input',  
-//  () => {
-//       colorPreview.style.backgroundColor = colorInput.value;
-//     });
-
-// const yourNameInput = document.getElementById('yourname');
-const nameError = document.getElementById('nameError');
-
-function error(input, message) {
-    input.className = 'form-control is-invalid';
-    const div = input.nextElementSibling;
-    div.innerText = message;
-    div.className = 'invalid-feedback';
-}
-
-function success(input) {
-    input.className = 'form-control is-valid';
-}
-
-function checkName(input) {
-    const re = /^[a-zA-Z\s-]+$/;
-    if (re.test(input.value)) {
-        success(input);
-    } else {
-        error(input, 'Name can only contain letters, spaces, and hyphens.');
-    }
-}
-
-function checkEmail(input) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-   
-    if(re.test(input.value)) {
-        success(input);
-    } else {
-        error(input, 'Invalid email address');
-    }
-}
-
-function checkRequired(inputs) {
-    inputs.forEach(function(input) {
-        if(input.value === '') {
-            error(input, `${input.id} is required.`);
-        } else {
-            success(input);
-        }
-    });  
-}
-
-function checkEmailConfirm(email, email_confirm) {
-    if (email.value !== email_confirm.value) {
-        error(email_confirm, 'Emails do not match.');
-    } else {
-        success(email_confirm);
-    }
-}
-
-email_confirm.addEventListener('paste', (event) => {
-  event.preventDefault();
-  alert('Please refrain from pasting your email address to confirm. Kindly type it');
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+	
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
 });
 
-// function checkLength(input, min, max) {
-//     if (input.value.length < min) {
-//         error(input, `${input.id} must be at least ${min} characters`);
-//     }else if (input.value.length > max) {
-//         error(input, `${input.id} must be a maximum of ${max} characters`);
-//     }else {
-//         success(input);
-//     }
-     
-// }
-
-function checkAge(input) {
-    var exp = 100;   
-    if(input.value > exp) 
-        error(input, "Age must be less than 100.");
-}
-
-function displayThankYou() {
-    const thankYouMessage = document.createElement('div');
-    thankYouMessage.className = 'alert alert-success mt-3';
-    thankYouMessage.innerText = 'Thank you for registering!';
-    form.parentElement.appendChild(thankYouMessage);
-    
-    setTimeout(() => {
-        thankYouMessage.remove();
-    }, 5000);
-}
-
-function clearForm() {
-    form.reset();
-    document.querySelectorAll('.form-control').forEach(function(input) {
-        input.className = 'form-control';
-    });
-}
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    checkRequired([yourname,email,age,email_confirm]);
-    checkName(yourname);
-    checkEmail(email);
-    // checkLength(yourname,5,15);
-    checkAge(age);
-    checkEmailConfirm(email, email_confirm);
-
-    const formIsValid = document.querySelectorAll('.is-invalid').length === 0;
-
-    if (formIsValid) {
-        displayThankYou();
-        clearForm();
-    }
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+	
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	
+	//show the previous fieldset
+	previous_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
 });
+
