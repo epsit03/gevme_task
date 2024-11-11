@@ -4,58 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multi-Step Form</title>
-  <style>
-    /* Inline Styles for Form */
-    * {margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;}
-    body {display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f7f7f7;}
-    #msform {width: 100%; max-width: 500px; text-align: center; position: relative;}
-    #progressbar {display: flex; justify-content: space-between; margin-bottom: 20px; counter-reset: step;}
-    #progressbar li {list-style-type: none; width: 33%; text-align: center; position: relative;}
-    #progressbar li:before {content: counter(step); counter-increment: step; width: 30px; height: 30px; line-height: 30px; border: 2px solid #3498db; display: block; text-align: center; margin: 0 auto 10px auto; border-radius: 50%; background: #fff;}
-    #progressbar li.active:before {background: #3498db; color: #fff;}
-    fieldset {display: none;}
-    fieldset.active {display: block;}
-    .action-button {width: 100px; background: #3498db; border: none; padding: 10px; color: white; border-radius: 5px; cursor: pointer; margin: 10px 5px;}
-    .action-button:disabled {background: #cccccc; cursor: not-allowed;}
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 </head>
-<body>
+<body style="margin: 0; padding: 0; font-family: 'Montserrat', Arial, Verdana; height: 100%; background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6)); display: flex; justify-content: center; align-items: center;">
 
 <!-- Multi-Step Form -->
-<form id="msform">
+<form id="msform" style="width: 400px; margin: 50px auto; text-align: center; position: relative;">
   <!-- progressbar -->
-  <ul id="progressbar">
-    <li class="active">Account Setup</li>
-    <li>Social Profiles</li>
-    <li>Personal Details</li>
+  <ul id="progressbar" style="margin-bottom: 30px; overflow: hidden; counter-reset: step; padding: 0;">
+    <li class="active" style="list-style-type: none; color: white; text-transform: uppercase; font-size: 9px; width: 33.33%; float: left; position: relative;">Account Setup</li>
+    <li style="list-style-type: none; color: white; text-transform: uppercase; font-size: 9px; width: 33.33%; float: left; position: relative;">Social Profiles</li>
+    <li style="list-style-type: none; color: white; text-transform: uppercase; font-size: 9px; width: 33.33%; float: left; position: relative;">Personal Details</li>
   </ul>
+
   <!-- fieldsets -->
-  <fieldset class="active">
-    <h2 class="fs-title">Create your account</h2>
-    <h3 class="fs-subtitle">This is step 1</h3>
-    <input type="text" name="email" placeholder="Email" required />
-    <input type="password" name="pass" placeholder="Password" required />
-    <input type="password" name="cpass" placeholder="Confirm Password" required />
-    <button type="button" class="next action-button">Next</button>
+  <fieldset style="background: white; border: 0; border-radius: 3px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; width: 80%; margin: 0 10%; position: relative;">
+    <h2 class="fs-title" style="font-size: 15px; text-transform: uppercase; color: #2C3E50; margin-bottom: 10px;">Create your account</h2>
+    <h3 class="fs-subtitle" style="font-weight: normal; font-size: 13px; color: #666; margin-bottom: 20px;">This is step 1</h3>
+    <input type="text" name="email" placeholder="Email" required style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
+    <input type="password" name="pass" placeholder="Password" required style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
+    <input type="password" name="cpass" placeholder="Confirm Password" required style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
+    <button type="button" class="next action-button" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px;">Next</button>
   </fieldset>
-  <fieldset>
-    <h2 class="fs-title">Social Profiles</h2>
-    <h3 class="fs-subtitle">Your presence on social media</h3>
-    <input type="text" name="twitter" placeholder="Twitter" />
-    <input type="text" name="facebook" placeholder="Facebook" />
-    <input type="text" name="gplus" placeholder="Google Plus" />
-    <button type="button" class="previous action-button">Previous</button>
-    <button type="button" class="next action-button">Next</button>
+
+  <fieldset style="display: none; background: white; border: 0; border-radius: 3px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; width: 80%; margin: 0 10%; position: relative;">
+    <h2 class="fs-title" style="font-size: 15px; text-transform: uppercase; color: #2C3E50; margin-bottom: 10px;">Social Profiles</h2>
+    <h3 class="fs-subtitle" style="font-weight: normal; font-size: 13px; color: #666; margin-bottom: 20px;">Your presence on social media</h3>
+    <input type="text" name="twitter" placeholder="Twitter" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
+    <input type="text" name="facebook" placeholder="Facebook" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
+    <input type="text" name="gplus" placeholder="Google Plus" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
+    <button type="button" class="previous action-button" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px;">Previous</button>
+    <button type="button" class="next action-button" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px;">Next</button>
   </fieldset>
-  <fieldset>
-    <h2 class="fs-title">Personal Details</h2>
-    <h3 class="fs-subtitle">We will never sell it</h3>
-    <input type="text" name="fname" placeholder="First Name" />
-    <input type="text" name="lname" placeholder="Last Name" />
-    <input type="text" name="phone" placeholder="Phone" />
-    <textarea name="address" placeholder="Address"></textarea>
-    <button type="button" class="previous action-button">Previous</button>
-    <a href="https://twitter.com/GoktepeAtakan" class="action-button" target="_top">Submit</a>
+
+  <fieldset style="display: none; background: white; border: 0; border-radius: 3px; box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); padding: 20px 30px; box-sizing: border-box; width: 80%; margin: 0 10%; position: relative;">
+    <h2 class="fs-title" style="font-size: 15px; text-transform: uppercase; color: #2C3E50; margin-bottom: 10px;">Personal Details</h2>
+    <h3 class="fs-subtitle" style="font-weight: normal; font-size: 13px; color: #666; margin-bottom: 20px;">We will never sell it</h3>
+    <input type="text" name="fname" placeholder="First Name" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
+    <input type="text" name="lname" placeholder="Last Name" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
+    <input type="text" name="phone" placeholder="Phone" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;">
+    <textarea name="address" placeholder="Address" style="padding: 15px; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 10px; width: 100%; box-sizing: border-box; font-family: 'Montserrat'; color: #2C3E50; font-size: 13px;"></textarea>
+    <button type="button" class="previous action-button" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px;">Previous</button>
+    <a href="https://twitter.com/GoktepeAtakan" class="action-button" target="_top" style="width: 100px; background: #27AE60; font-weight: bold; color: white; border: 0; border-radius: 1px; cursor: pointer; padding: 10px; margin: 10px 5px; font-size: 14px; text-decoration: none; display: inline-block; text-align: center;">Submit</a>
   </fieldset>
 </form>
 
@@ -68,7 +58,7 @@
 
     function updateForm(step) {
       fieldsets.forEach((fieldset, index) => {
-        fieldset.classList.toggle("active", index === step);
+        fieldset.style.display = index === step ? 'block' : 'none';
         progressbar[index].classList.toggle("active", index <= step);
       });
     }
